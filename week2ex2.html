@@ -1,0 +1,28 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+  <title>Weather API Fetch Test</title>
+</head>
+<body>
+<div>
+  <input type="text" id="weather-town"> <!-- This creates a text box input. ID should be unique and is used to find the element in the searchWeatherFunction -->
+  <button onclick="searchWeather()">Search</button> <!-- This creates a button that calls the searchWeather function when clicked. onClick is one of several possible mouse events -->
+  <br><br>
+  The current weather is: <span id="results"></span> <!-- This creates a span element that will be used to display the results of the searchWeather function. The ID is used to find the element in the searchWeather function -->
+</div>
+
+<script type="text/javascript">
+  const APIKey = 'ab2c9d8ba56c7e1446bf3bfbcdcea5b1' // API key is used to authenticate requests to the OpenWeatherMap API. NOTE: it is bad practice to have the key in plain text like this, it should be kept a secret.
+  async function searchWeather() { //Function called when the button is clicked
+    try {
+      const town = document.getElementById('weather-town').value; // Searches the DOM for element with given id. As ID is supposed to be unique, this will just be one element.
+      const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${town}&appid=${APIKey}`); // Make a GET request to the weather API. This will return some JSON. Uses await as it's an async call - we have to wait for the response. Other options are to use .then() notation or, if making multiple calls, could not await and store the promises, then resolve them at the end.
+      const responseData = await response.json(); // Await the response and convert it to JSON format. Fetch promise can resolve before the whole response body is fully downloaded, hence why we need to await this as well. NOTE this will error if no body returned e.g. if fetch returned 404.
+      const weather = responseData.weather[0] // Get the first element of the weather array. NOTE this could cause an error if the array is empty
+      document.getElementById('results').textContent = `${weather.main} (${weather.description})`; // Searches the DOM for element with given id and sets its text content to the weather main and description. This will update the span element created above.
+    } catch (error) { // If there is any error in the try block, this block will execute and log the error to the console.
+      console.error('Error fetching weather:', error);
+    }
+  }
+</script>
+
+
+</body></html>

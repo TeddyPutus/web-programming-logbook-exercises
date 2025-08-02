@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ted's Homepage</title>
+</head>
+<style>
+table, th, td {
+  border:1px solid black;
+}
+body {
+  background-color: lightblue;
+  font-family: verdana;
+}
+h1{
+    text-align: center;
+    color: whitesmoke;
+    font-weight: bold;
+}
+footer{
+    text-align: center;
+}
+</style>
+<body>
+    <header>
+        <h1>Ted's Homepage</h1>
+    </header>
+    <nav>
+        <a href="#aboutMe">About Me</a> |
+        <a href="#hobbies">Hobbies</a> |
+        <a href="#python">Python</a> |
+        <a href="photos.html">Photos</a>
+    </nav>
+    <main>
+        <section id = "aboutMe">
+            <h2> About Me </h2>
+            <p>Hi, welcome to my homepage! </p>
+            <p>I'm currently studying software engineering at BNU and this page is part of my coursework for web programming.</p>
+        </section>
+
+        <section id = "hobbies">
+            <h2> Hobbies </h2>
+            <ul>
+                <li>Hiking: I do long distance hiking - it's great to get into the countryside and reconnect with nature</li>
+                <li>Music: I love rock music and play guitar</li>
+                <li>Spanish & Costa Rican culture: I used to live in Costa Rica and really love the culture there. I continue to study Spanish back here at a Spanish cultural centre in London. Pura Vida!</li>
+            </ul>
+        </section>
+
+
+        <section id = "python">
+            <h2> Python </h2>
+            <p>I love Python! It is the friendliest programming language known to man! Here are a few of my favourite packages </p>
+            <table>
+            <tr>
+                <th>Package</th>
+                <th>Why it's great</th>
+                <th>Link</th>
+            </tr>
+            <tr>
+                <td>Pydantic</td>
+                <td>An amazing tool for validating data models</td>
+                <td><a target="_blank" rel="noopener noreferrer" href="https://docs.pydantic.dev/latest/">Docs</a></td>
+            </tr>
+            <tr>
+                <td>fastAPI</td>
+                <td>Easy to use web framework</td>
+                <td><a target="_blank" rel="noopener noreferrer" href="https://fastapi.tiangolo.com/">Docs</a></td>
+            </tr>
+            <tr>
+                <td>Pandas</td>
+                <td>Excellent tool for dataframes</td>
+                <td><a target="_blank" rel="noopener noreferrer" href="https://pandas.pydata.org/">Docs</a></td>
+            </tr>
+            <tr>
+                <td>spaCy</td>
+                <td>Amazing NLP package</td>
+                <td><a target="_blank" rel="noopener noreferrer" href="https://spacy.io/">Docs</a></td>
+            </tr>
+            </table>
+        </section>
+    </main>
+    <footer>
+        © Teddy Putus, 2025
+    </footer>
+</body>
+</html>

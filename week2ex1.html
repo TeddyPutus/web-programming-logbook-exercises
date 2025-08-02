@@ -1,0 +1,62 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Name Analyser</title>
+</head>
+
+<body>
+  <h1>The Namifier 3000</h1>
+  <h2>Enter your names</h2>
+  <input type="text" id="name0" placeholder="Enter name 1" >
+  <input type="text" id="name1" placeholder="Enter name 2">
+  <input type="text" id="name2" placeholder="Enter name 3">
+  <button onclick="performOperations()">Generate Output</button>
+  <h2>Output</h2>
+  <div id="output">
+    <p id="output0"></p>
+    <p id="output1"></p>
+    <p id="output2"></p>
+  </div>
+
+  <script>
+    const nameArray = Array(3).fill("");
+
+    function performOperations(){
+      updateNames();
+      createOutput();
+      createAlerts();
+    }
+
+    function updateNames(){
+      nameArray[0] = document.getElementById("name0").value;
+      nameArray[1] = document.getElementById("name1").value;
+      nameArray[2] = document.getElementById("name2").value;
+    }
+
+    function createAlerts(){
+      window.alert(`Names in alphabetical order: ${sortNamesByAlphabet()}\n` +
+                   `Names in reverse alphabetical order: ${sortNamesByReverseAlphabet()}`);
+    }
+
+    function createOutput() {
+      nameArray.map((name, index) => {
+        document.getElementById(`output${index}`).innerHTML = name ? `Hello ${name || "Not set"}, there are ${name.length} letters in your name.` : "";
+      }).join("");
+    }
+
+    function sortNamesByAlphabet() {
+      return nameArray.filter(value => value !== "").sort((a, b) => a.localeCompare(b));
+    }
+
+    function sortNamesByReverseAlphabet() {
+      return nameArray.filter(value => value !== "").sort((a, b) => b.localeCompare(a));
+    }
+
+  </script>
+
+</body>
+
+</html>

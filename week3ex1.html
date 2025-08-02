@@ -1,0 +1,88 @@
+<html><head>
+  <script type="text/javascript">
+    function product(a,b)
+    {
+      return a*b;
+    }
+    function divide(a,b)
+    {
+      return a/b;
+    }
+    function sum(a,b)
+    {
+      return a+b;
+    }
+    function subtract(a,b)
+    {
+      return a-b;
+    }
+    function minimum(a,b)
+    {
+      return a<b ? a : b;
+    }
+    function maximum(a,b)
+    {
+      return a>b ? a : b;
+    }
+    function power(a,b)
+    {
+      return Math.pow(a,b);
+    }
+
+    function toTitleCase(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    function writeResults(value1, value2, results) {
+      Object.entries(results).map(([key, value]) => {
+        document.write(`${toTitleCase(key)} of ${value1} and ${value2} is ` + value + "<br>");
+      });
+      document.write("<br>");
+    }
+
+    function alertResults(value1, value2, results){
+      window.alert("To see these results in an alert box click NOW");
+      window.alert(
+        `Results for ${value1} and ${value2}:\n` +
+        Object.entries(results).map(([key, value]) => `${toTitleCase(key)}: ${value}`).join("\n")
+      );
+    }
+
+    function isNumber(value) {
+      return !isNaN(value) && value !== null && value.trim() !== '';
+    }
+
+    function doCalc(){
+      let value1=prompt("Please enter first number here","first number");
+      let value2=prompt("Please enter second number here","second number");
+
+      if (!isNumber(value1) || !isNumber(value2)) {
+        alert("Invalid input. Please enter valid numbers.");
+        return;
+      }
+
+      let results = {
+        product: product(value1, value2),
+        division: divide(value1, value2),
+        sum: sum(value1, value2),
+        subtraction: subtract(value1, value2),
+        minimum: minimum(value1, value2),
+        maximum: maximum(value1, value2),
+        power: power(value1, value2),
+      };
+
+      writeResults(value1, value2, results);
+      alertResults(value1, value2, results);
+    }
+
+  </script>
+</head>
+
+<body>
+<script type="text/javascript">
+  do {
+    doCalc();
+  } while (confirm("Do you want to do another calculation?"));
+</script>
+
+</body></html>

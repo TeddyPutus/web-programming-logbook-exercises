@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Counters</title>
+</head>
+<body>
+<div id="countersContainer">
+  <h1>Counters</h1>
+  <button id="addCounterButton" onclick="createCounter()">Add Counter</button>
+  <div id="counter0">
+    <h2>Counter 0</h2>
+    <button onclick="incrementCounter(0)">Increment</button>
+    <span id="counterValue0">0</span>
+</div>
+  <div id="counter1">
+    <h2>Counter 1</h2>
+    <button onclick="incrementCounter(1)">Increment</button>
+    <span id="counterValue1">0</span>
+  </div>
+</div>
+<script>
+  const counters = [0, 0];
+  function createCounter(){
+    const counterId = counters.length;
+    counters.push(0);
+
+    const counterDiv = document.createElement('div');
+    counterDiv.id = `counter${counterId}`;
+    counterDiv.className = 'counter';
+
+    const counterTitle = document.createElement('h2');
+    counterTitle.textContent = `Counter ${counterId}`;
+
+    const incrementButton = document.createElement('button');
+    incrementButton.textContent = 'Increment';
+    incrementButton.onclick = () => incrementCounter(counterId);
+
+    const counterValueSpan = document.createElement('span');
+    counterValueSpan.id = `counterValue${counterId}`;
+    counterValueSpan.textContent = '0';
+
+    counterDiv.appendChild(counterTitle);
+    counterDiv.appendChild(incrementButton);
+    counterDiv.appendChild(counterValueSpan);
+
+    document.getElementById('countersContainer').appendChild(counterDiv);
+  }
+
+  function incrementCounter(counterId) {
+    counters[counterId]++;
+    document.getElementById(`counterValue${counterId}`).textContent = counters[counterId];
+  }
+</script>
+</body>
+</html>
